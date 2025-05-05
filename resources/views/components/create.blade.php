@@ -10,7 +10,7 @@
                     <div class="card-header bg-white border-0 pt-4">
                         <h2 class="h4 text-center mb-0">Create New Profile</h2>
                     </div>
-                {{-- Form Errors Alert --}}
+                    {{-- Form Errors Alert --}}
                     @if ($errors->any())
                         <x-alert type="warning">
                             <h3>Errors</h3>
@@ -21,17 +21,18 @@
                             </ul>
                         </x-alert>
                     @endif
-                {{-- End --}}
+                    {{-- End --}}
 
                     <div class="card-body px-4 py-3">
-                        <form class="needs-validation" method="POST" action="{{ route('store') }}">
+                        <form class="needs-validation" method="POST" action="{{ route('store') }}" enctype="multipart/form-data">
                             @csrf
                             <!-- Name Field -->
                             <div class="mb-3">
                                 <label for="nameInput" class="form-label fw-semibold">
                                     Full Name
                                 </label>
-                                <input type="text" class="form-control form-control-lg" id="nameInput" name="name" value="{{old('name')}}">
+                                <input type="text" class="form-control form-control-lg" id="nameInput" name="name"
+                                    value="{{ old('name') }}">
                                 <div class="invalid-feedback">
                                     Please provide a valid name.
                                 </div>
@@ -42,7 +43,8 @@
                                 <label for="emailInput" class="form-label fw-semibold">
                                     Email Address
                                 </label>
-                                <input type="text" class="form-control form-control-lg" id="emailInput" name="email" value="{{old('email')}}">
+                                <input type="text" class="form-control form-control-lg" id="emailInput" name="email"
+                                    value="{{ old('email') }}">
 
                             </div>
 
@@ -52,23 +54,29 @@
                                     Password
                                 </label>
                                 <input type="password" class="form-control form-control-lg" id="emailInput" name="password">
-                            {{--End  --}}
-                            {{-- Confirmation Password --}}
+                                {{-- End  --}}
+                                {{-- Confirmation Password --}}
                                 <label for="emailInput" class="form-label fw-semibold">
                                     Confirmation Password
                                 </label>
                                 <input type="password" class="form-control form-control-lg" id="emailInput"
                                     name="password_confirmation">
                                 <div class="form-text">Minimum 8 characters</div>
-                            {{-- End --}}
+                                {{-- End --}}
                             </div>
-
+                            <!-- Image Field -->
+                            <div class="mb-3">
+                                <label for="nameInput" class="form-label fw-semibold">
+                                    Profile Picteur
+                                </label>
+                                <input type="file" class="form-control form-control-lg" i name="image">
+                            </div>
                             <!-- Bio Field -->
                             <div class="mb-4">
                                 <label for="bioTextarea" class="form-label fw-semibold">
                                     Biography
                                 </label>
-                                <textarea class="form-control" id="bioTextarea" name="bio" rows="3" placeholder="Tell us about yourself..." >{{old('bio')}}</textarea>
+                                <textarea class="form-control" id="bioTextarea" name="bio" rows="3" placeholder="Tell us about yourself...">{{ old('bio') }}</textarea>
                                 <div class="form-text">Maximum 500 characters</div>
                             </div>
 

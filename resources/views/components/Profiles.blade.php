@@ -55,7 +55,7 @@
                                         <div class="flex-shrink-0 me-2">
                                             <div class="bg-primary bg-opacity-10 rounded-circle overflow-hidden"
                                                 style="width: 36px; height: 36px;">
-                                                <img src="https://picsum.photos/seed/{{ $profile->id }}/200/200"
+                                                <img src="{{$profile->image}}"
                                                     alt="Profile image" class="w-100 h-100 object-fit-cover">
                                             </div>
                                         </div>

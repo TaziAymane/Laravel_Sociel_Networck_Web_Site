@@ -49,7 +49,7 @@
                 </div>
                 
                 <div class="card-footer bg-light">
-                    <a href="{{ route('profiles.index') }}" class="btn btn-outline-secondary">
+                    <a href="{{ route('profiles.index') }}" class="btn btn-secondary">
                        Back
                     </a>
                 </div>
