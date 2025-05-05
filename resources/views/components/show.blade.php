@@ -22,8 +22,8 @@
                                 <h5 class="mb-1 text-muted">Image</h5>
                                 <p class="mb-0 fs-5">
                                     <div class="flex-shrink-0 me-2">
-                                        <div class="bg-primary bg-opacity-10 rounded-circle overflow-hidden" style="width: 60px; height: 60px;">
-                                            <img src="https://picsum.photos/seed/{{ $profile->id }}/200/200" 
+                                        <div class="bg-primary bg-opacity-10 rounded-circle overflow-hidden" style="width: 80px; height: 80px;">
+                                            <img src="{{asset('storage/'.$profile->image)}}" 
                                                  alt="Profile image" 
                                                  class="w-100 h-100 object-fit-cover">
                                         </div>

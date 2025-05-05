@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -33,7 +34,10 @@ class ProfileController extends Controller
       $email = $request->email;
       $bio = $request->bio;
       $password = $request->password;
-      $imagePath = $request->file('image')->store('profile','public');
+      $imagePath = null;
+      if ($request->hasFile('image')) {
+         $imagePath = $request->file('image')->store('profile', 'public');
+      }
 
       // Validation 
       $request->validate([
@@ -72,12 +76,24 @@ class ProfileController extends Controller
    public function update(Request $request, $id)
    {
       $profile = Profile::findOrfail($id);
+      // Handle image upload if present
+      if ($request->hasFile('image')) {
+         // Delete old image if it exists
+         if ($profile->image) {
+            Storage::disk('public')->delete($profile->image);
+         }
+
+         // Store new image
+         $validatedData['image'] = $request->file('image')->store('profile_images', 'public');
+      }
       $validateDate = $request->validate([
 
          'name'   =>  'required|string|max:255',
          'email'  =>  'required|email|max:255',
          'bio'    =>  'nullable|string',
+         'image'  =>  'nullable|image|mimes:png,jpg,svg|max:5000'
       ]);
+      $validateDate['image'] = $request->file('image')->store('profile', 'public');
       $profile->update($validateDate);
       return redirect()->route('profiles.show', $id)
          ->with('success', 'profile updated with success ');

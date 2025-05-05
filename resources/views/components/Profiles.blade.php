@@ -40,6 +40,7 @@
                     <thead class="table-light">
                         <tr>
                             <th scope="col" class="w-5">#ID</th>
+                            <th scope="col">Image</th>
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
                             <th scope="col">Bio</th>
@@ -50,15 +51,19 @@
                         @foreach ($profiles as $profile)
                             <tr>
                                 <td class="fw-bold">{{ $profile->id }}</td>
+                                
+                                <td>
+                                    <div class="flex-shrink-0 me-2">
+                                        <div class="bg-primary bg-opacity-10 rounded-circle overflow-hidden"
+                                            style="width: 36px; height: 36px;">
+                                            <img src="{{ asset('storage/'.$profile->image) }}"
+                                                alt="Profile image" class="w-100 h-100 object-fit-cover">
+                                        </div>
+                                    </div>
+                                </td>
                                 <td>
                                     <div class="d-flex align-items-center">
-                                        <div class="flex-shrink-0 me-2">
-                                            <div class="bg-primary bg-opacity-10 rounded-circle overflow-hidden"
-                                                style="width: 36px; height: 36px;">
-                                                <img src="{{$profile->image}}"
-                                                    alt="Profile image" class="w-100 h-100 object-fit-cover">
-                                            </div>
-                                        </div>
+                                        
                                         <div class="flex-grow-1">
                                             {{ $profile->name }}
                                         </div>

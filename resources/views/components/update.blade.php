@@ -48,7 +48,7 @@
                                 <label for="nameInput" class="form-label fw-semibold">
                                     Profile Picteur
                                 </label>
-                                <input type="file" class="form-control form-control-lg" id="nameInput" name="image">
+                                <input type="file" class="form-control form-control-lg" name="image" value="{{old('image',$profile->image) }}">
                             </div>
                             <!-- Bio Field -->
                             <div class="mb-4">
