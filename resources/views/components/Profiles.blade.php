@@ -79,12 +79,11 @@
                                         <a href="{{ route('profiles.show', $profile->id) }}" class="btn btn-sm btn-primary">
                                             Show
                                         </a>
-                                        <form action="" method="get ">
+                                        <form action="{{ route('profiles.edit',$profile->id)}}" method="get">
                                             @csrf
-                                            <a href="{{ route('profiles.edit', $profile->id) }}"
-                                                class="btn btn-sm btn-secondary">
-                                                Edit
-                                            </a>
+                                            <button class="btn btn-sm btn-secondary">
+                                                update
+                                            </button>
                                         </form>
                                         
                                         <form action="{{ route('profiles.destroy',$profile->id)}}" method="POST" >

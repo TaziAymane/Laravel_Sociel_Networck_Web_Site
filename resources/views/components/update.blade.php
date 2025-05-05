@@ -25,12 +25,7 @@
                                    class="form-control form-control-lg" 
                                    id="nameInput" 
                                    name="name" 
-                                   value="{{$profile->name}}"
-                                   required
-                                   >
-                            <div class="invalid-feedback">
-                                Please provide a valid name.
-                            </div>
+                                   value="{{$profile->name}}">
                         </div>
                         
                         <!-- Email Field -->
@@ -42,12 +37,7 @@
                                    class="form-control form-control-lg" 
                                    id="emailInput" 
                                    name="email" 
-                                   value="{{$profile->email}}" 
-                                   required
-                                   >
-                            <div class="invalid-feedback">
-                                Please provide a valid email.
-                            </div>
+                                   value="{{$profile->email}}" >
                         </div>
                         
                         <!-- Bio Field -->
@@ -73,33 +63,12 @@
                             </button>
                         </div>
                     </form> 
-                </div>
-                
-                <div class="card-footer bg-white border-0 text-center py-3">
-                    <p class="text-muted mb-0">Already have an account? 
-                        <a href="#" class="text-decoration-none">Sign in</a>
-                    </p>
+                    
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Bootstrap form validation script -->
-<script>
-(() => {
-  'use strict'
-  const forms = document.querySelectorAll('.needs-validation')
-  Array.from(forms).forEach(form => {
-    form.addEventListener('submit', event => {
-      if (!form.checkValidity()) {
-        event.preventDefault()
-        event.stopPropagation()
-      }
-      form.classList.add('was-validated')
-    }, false)
-  })
-})()
-</script>
    
 @endsection

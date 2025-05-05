@@ -28,8 +28,8 @@ Route::get('/Profiles/{id}',[ProfileController::class,'show'])->name('profiles.s
 Route::get('/create',[ProfileController::class,'create'])->name('create');
 Route::post('/create/store',[ProfileController::class,'store'])->name('store');
 //Update Profile Page
-Route::get('/edit/{id}',[ProfileController::class,'edit'])->name('profiles.edit');
-Route::put('/update/{id}',[ProfileController::class,'update'])->name('profiles.update');
+Route::get('/edit/{profile}',[ProfileController::class,'edit'])->name('profiles.edit');
+Route::put('/update/{profile}',[ProfileController::class,'update'])->name('profiles.update');
 //Delete Profile 
 Route::delete('/delete/{id}',[ProfileController::class,'destroy'])->name('profiles.destroy');
 

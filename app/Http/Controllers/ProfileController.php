@@ -8,26 +8,31 @@ use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
-   public function profile(){
+   public function profile()
+   {
       return view('components.Profile');
    }
-   public function index(){
-     $profiles =  Profile::latest()->paginate(15);
-        return view('components.Profiles',compact('profiles'));
+   public function index()
+   {
+      $profiles =  Profile::latest()->paginate(15);
+      return view('components.Profiles', compact('profiles'));
    }
-   public function show(Request $request){
-      $id = $request->id ;
+   public function show(Request $request)
+   {
+      $id = $request->id;
       $profile = Profile::findOrFail($id);
-      return view('components.show',compact('profile'));
+      return view('components.show', compact('profile'));
    }
-   public function create(){
+   public function create()
+   {
       return view('components.create');
    }
-   public function store(Request $request){
-      $name = $request->name ;
-      $email = $request->email ;
-      $bio = $request->bio ;
-      $password = $request->password ;
+   public function store(Request $request)
+   {
+      $name = $request->name;
+      $email = $request->email;
+      $bio = $request->bio;
+      $password = $request->password;
 
       // Validation 
       $request->validate([
@@ -37,14 +42,13 @@ class ProfileController extends Controller
       ]);
       //Insertion 
       Profile::create([
-         'name'=>$name ,
-         'email'=>$email,
-         'password'=>Hash::make($password),
-         'bio'=>$bio,
+         'name' => $name,
+         'email' => $email,
+         'password' => Hash::make($password),
+         'bio' => $bio,
 
       ]);
-      return redirect()->route('profiles.index')->with('success',"$name. your  Profile Created white success.");
-
+      return redirect()->route('profiles.index')->with('success', "$name. your  Profile Created white success.");
    }
    // public function destroy(Request $request){
    //    $id = $request->id ;
@@ -60,16 +64,26 @@ class ProfileController extends Controller
       $profile = Profile::findOrfail($id);
       // dd($profile);
       $profile->delete();
-      return redirect()->route('profiles.index')->with('success','Profile delete with success');
+      return redirect()->route('profiles.index')->with('success', 'Profile delete with success');
    }
-   public function edit(Request $request){
-      $id = $request->id ;
-      $profile = Profile::find($id);
+   public function edit(Profile $profile)
+   {
+      // $id = $request->id;
+      // dd($id);
+      // $profile = Profile::findOrfail($id);
       // dd($profile);
-      return view('components.update',compact('profile'));
+      return view('components.update', compact('profile'));
    }
-   public function update(Request $request , Profile $profile){
-         $profile->update($request->all());
-         return redirect()->route('profiles.index')->with('success','Product updated white success');
+   public function update(Request $request,$id)
+   {
+     $profile = Profile::findOrfail($id);
+     $validateDate = $request->validate([
+         'name' => 'required|string|max:255',
+        'email' => 'required|email|max:255',
+        'bio' => 'nullable|string',
+     ]);
+     $profile->update($validateDate);
+     return redirect()->route('profiles.index');
+    
    }
 }
