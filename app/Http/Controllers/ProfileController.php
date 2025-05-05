@@ -46,12 +46,21 @@ class ProfileController extends Controller
       return redirect()->route('profiles.index')->with('success',"$name. your  Profile Created white success.");
 
    }
-   public function destroy(Request $request){
-      $id = $request->id ;
-      $profile = Profile::findOrFail($id);
-      $profile->delete();
-      return redirect()->route('profiles.index')->with('success','profile deleted white success');
+   // public function destroy(Request $request){
+   //    $id = $request->id ;
+   //    $profile = Profile::findOrFail($id);
+   //    $profile->delete();
+   //    return redirect()->route('profiles.index')->with('success','profile deleted white success');
+   //    // dd($profile);
+   // }
+   public function destroy(Request $request)
+   {
+      $id = $request->id;
+      // dd($id);
+      $profile = Profile::findOrfail($id);
       // dd($profile);
+      $profile->delete();
+      return redirect()->route('profiles.index')->with('success','Profile delete with success');
    }
    public function edit(Request $request){
       $id = $request->id ;

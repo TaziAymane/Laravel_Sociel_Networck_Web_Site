@@ -31,7 +31,7 @@ Route::post('/create/store',[ProfileController::class,'store'])->name('store');
 Route::get('/edit/{id}',[ProfileController::class,'edit'])->name('profiles.edit');
 Route::put('/update/{id}',[ProfileController::class,'update'])->name('profiles.update');
 //Delete Profile 
-Route::delete('/delete/{id}',[ProfileController::class,'destroy'])->name('profoles.destroy');
+Route::delete('/delete/{id}',[ProfileController::class,'destroy'])->name('profiles.destroy');
 
 
 ?>

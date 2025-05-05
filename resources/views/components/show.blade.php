@@ -18,7 +18,7 @@
                             <p class="mb-0 fs-5"><b>{{ $profile->id }}</b></p>
                         </div>
                         <div class="list-group list-group-flush">
-                            <div class="list-group-item">
+                            <div class="list-group-item">   
                                 <h5 class="mb-1 text-muted">Image</h5>
                                 <p class="mb-0 fs-5">
                                     <div class="flex-shrink-0 me-2">

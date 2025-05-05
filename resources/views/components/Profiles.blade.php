@@ -64,10 +64,8 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td>
-                                    <a href="mailto:{{ $profile->email }}" class="text-decoration-none">
-                                        {{ $profile->email }}
-                                    </a>
+                                <td class="text-decoration-none">
+                                    {{ $profile->email }}
                                 </td>
                                 <td>
 
@@ -78,21 +76,22 @@
                                 </td>
                                 <td class="text-end">
                                     <div class="btn-group" role="group">
-                                        <a href="{{ route('profiles.show', $profile->id) }}" class="btn btn-sm btn-primary"
-                                            title="View">
+                                        <a href="{{ route('profiles.show', $profile->id) }}" class="btn btn-sm btn-primary">
                                             Show
                                         </a>
                                         <form action="" method="get ">
                                             @csrf
-                                            <a href="{{ route('profiles.edit',$profile->id)}}" class="btn btn-sm btn-secondary" title="Edit">
+                                            <a href="{{ route('profiles.edit', $profile->id) }}"
+                                                class="btn btn-sm btn-secondary">
                                                 Edit
                                             </a>
                                         </form>
-                                        <form action="{{ route('profoles.destroy',$profile->id) }}" method="post">
+                                        
+                                        <form action="{{ route('profiles.destroy',$profile->id)}}" method="POST" >
                                             @csrf
                                             @method('DELETE')
-                                            <button  class="btn btn-sm btn-danger" onclick="return alert('are you schour ??')">
-                                                Delete
+                                            <button class="btn btn-sm btn-danger" onclick="return alert('are you shour you want to delete {{$profile->name}}')">
+                                                delete
                                             </button>
                                         </form>
 
