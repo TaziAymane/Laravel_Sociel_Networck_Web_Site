@@ -19,7 +19,7 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/logout', [LoginController::class, 'logout'])->name('login.logout');
 
 // index page
-Route::get('/', [HomeController::class, 'index'])->name('homePage');
+Route::get('/home', [HomeController::class, 'index'])->name('homePage');
 
 // Profiles Page
 Route::get('/Profiles', [ProfileController::class, 'index'])->name('profiles.index');
@@ -63,7 +63,7 @@ Route::get('/cookie/set/{value}', function ($value) {
 });
 
 //Publication Routing 
-Route::get('/publication',[PublicationController::class,"index"])->name('publication.index');
+Route::get('/',[PublicationController::class,"index"])->name('publication.index');
 // create 
 Route::get('/publication/create',[PublicationController::class,"create"])->name('publication.create');
 Route::post('/publication/store',[PublicationController::class,'store'])->name('publication.store');
@@ -73,7 +73,7 @@ Route::put('publication/update/{id}',[PublicationController::class,'update'])->n
 // show 
 Route::get('/show/{id}',[PublicationController::class,'show'])->name('publication.show');
 // destroy 
-Route::delete('/destroy/{id}',[PublicationController::class,'destroy'])->name('publication.destroy');
+Route::delete('/destroy/{id}',[PublicationController::class,'destroy'])->name('publication.destroy')->middleware('auth');
 
 
 

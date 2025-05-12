@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'All Publications')
+@section('titel')
+    Publications
+@endsection
 
 @section('contente')
 <div class="container py-5">
@@ -43,12 +45,18 @@
                             <form action="{{ route('publication.destroy', $publication->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-outline-danger">
+                                <button type="submit" class="btn btn-sm btn-outline-danger"
+                                onclick="return alert('are you shour you want to delete this publication !!')"
+                                >
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </form>
                         </div>
+                        
                     </div>
+                    <div class="d-flex text-end">
+                            <p>plush al {{$publication->created_at->format('d-m-Y')}}</p>
+                        </div>
                 </div>
             </div>
         @empty

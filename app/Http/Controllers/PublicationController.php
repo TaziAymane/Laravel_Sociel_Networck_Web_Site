@@ -103,8 +103,10 @@ class PublicationController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Publication $publication)
+    public function destroy(Request $request)
     {
+        $id = $request->id ;
+        $publication = Publication::findOrFail($id);
         $publication->delete() ;
         return redirect()->route('publication.index')
                    ->with('success', 'Publication deleted successfully');
