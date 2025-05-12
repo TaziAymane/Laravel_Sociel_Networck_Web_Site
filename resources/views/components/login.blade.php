@@ -51,6 +51,13 @@
                 <h2>Login</h2>
                 <p class="text-muted">Please enter your credentials</p>
             </div>
+            <div class="text-center ">
+                @error('email')
+                            <span class="text-danger">
+                                *{{ $message }}
+                            </span>
+                        @enderror
+            </div>
 
             <form action="{{ route('login') }}" method="POST">
                 @csrf
@@ -59,11 +66,7 @@
                     <div class="input-group">
                         <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                         <input type="text" class="form-control" name="email" value="{{ old('email') }}">
-                        @error('email')
-                            <span class="text-danger">
-                                *{{ $message }}
-                            </span>
-                        @enderror
+                        
                     </div>
                 </div>
 

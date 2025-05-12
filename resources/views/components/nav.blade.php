@@ -16,6 +16,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('profiles.index') }}">Tous les Profiles</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('publication.index') }}">Publication </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('publication.create') }}">Add Publication </a>
+                </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('seetings.index') }}">Settings</a>

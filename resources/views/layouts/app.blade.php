@@ -10,6 +10,25 @@
         integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
     <title>Sociel Network |@yield('titel')</title>
 </head>
+<style>
+    .publication-image {
+        background-color: #f8f9fa;
+        transition: transform 0.3s ease;
+    }
+    .card:hover .publication-image {
+        transform: scale(1.03);
+    }
+    .card {
+        transition: all 0.3s ease;
+        border-radius: 10px;
+    }
+    .card:hover {
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .object-fit-cover {
+        object-fit: cover;
+    }
+</style>
 
 <body>
     {{-- NAVBAR --}}

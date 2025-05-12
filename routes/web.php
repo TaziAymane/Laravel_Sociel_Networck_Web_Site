@@ -4,7 +4,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InformationsController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
-use App\Service\Calcule;
+use App\Http\Controllers\PublicationController;
+use App\Models\Publication;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 
@@ -44,7 +46,62 @@ Route::delete('/delete/{id}', [ProfileController::class, 'destroy'])->name('prof
 
 
 Route::get('/hello', function () {
-    $res = new Response('hello1',200,['hello']);
-    $profile = response()->download('storage/profile/profile.jpg',disposition:'inline');
-    return $profile ;
+    // $res = new Response('hello1',200,['hello']);
+    $profile = response()->download('storage/profile/profile.jpg', disposition: 'inline');
+    return $profile;
 });
+Route::get('/cookie/get', function (Request $request) {
+    $age = $request->cookie('age');
+    return response()->json([
+        'age_cookie_value' => $age ?? 'Cookie_Not_Found' 
+    ]) ;
+});
+
+Route::get('/cookie/set/{value}', function ($value) {
+    $cookie = cookie(name:'age',value:$value,minutes:60,secure:true,httpOnly:true);
+    return response('Cookie est successfuly'.$value)->cookie($cookie);
+});
+
+//Publication Routing 
+Route::get('/publication',[PublicationController::class,"index"])->name('publication.index');
+// create 
+Route::get('/publication/create',[PublicationController::class,"create"])->name('publication.create');
+Route::post('/publication/store',[PublicationController::class,'store'])->name('publication.store');
+// update
+Route::get('publication/edit/{id}',[PublicationController::class,'edit'])->name('publication.edit');
+Route::put('publication/update/{id}',[PublicationController::class,'update'])->name('publication.update');
+// show 
+Route::get('/show/{id}',[PublicationController::class,'show'])->name('publication.show');
+// destroy 
+Route::delete('/destroy/{id}',[PublicationController::class,'destroy'])->name('publication.destroy');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Route::get('/headers',function(Request $request){
+//     $response = new Response(["data" => "ok"]) ;
+//     dd($request->header('host'));
+//     return $response->withHeaders([
+//         'Content-type' => 'social Network Application '
+//     ]) ;
+// });
+
+// Route::get('/request',function(request $request){
+//     dd($request->url() , $request->fullUrl()) ;
+// });
