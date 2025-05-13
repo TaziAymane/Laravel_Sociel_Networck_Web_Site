@@ -19,9 +19,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('publication.index') }}">Publication </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('publication.create') }}">Add Publication </a>
-                </li>
+               
 
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('seetings.index') }}">Settings</a>
@@ -33,6 +31,9 @@
                 @endguest
               
                 @auth
+                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('publication.create') }}">Add Publication </a>
+                </li>
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                             data-bs-toggle="dropdown" aria-expanded="false">

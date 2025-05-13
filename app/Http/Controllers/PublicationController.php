@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Publication;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class PublicationController extends Controller
@@ -31,8 +32,10 @@ class PublicationController extends Controller
      */
     public function store(Request $request)
     {
+        // dd(Auth::id());
         $title = $request->title ;
         $body = $request->body ;
+        $profile_id = Auth::id();
         $imagePath = null;
       if ($request->hasFile('image')) {
          $imagePath = $request->file('image')->store('publication', 'public');
@@ -46,7 +49,8 @@ class PublicationController extends Controller
         Publication::create([
             'title' => $title ,
             'body'  => $body ,
-            'image' => $imagePath
+            'image' => $imagePath,
+            'profile_id' => $profile_id
         ]);
         // dd($request);
         return redirect()->route('publication.index')->with('success','your publication is pulish now');

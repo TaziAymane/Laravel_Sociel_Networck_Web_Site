@@ -9,5 +9,5 @@ class Publication extends Model
 {
     //
     use SoftDeletes ;
-    protected $fillable=['title','body','image'] ;
+    protected $fillable=['title','body','image','profile_id'] ;
 }

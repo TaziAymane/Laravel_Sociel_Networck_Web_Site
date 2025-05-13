@@ -65,8 +65,8 @@ Route::get('/cookie/set/{value}', function ($value) {
 //Publication Routing 
 Route::get('/',[PublicationController::class,"index"])->name('publication.index');
 // create 
-Route::get('/publication/create',[PublicationController::class,"create"])->name('publication.create');
-Route::post('/publication/store',[PublicationController::class,'store'])->name('publication.store');
+Route::get('/publication/create',[PublicationController::class,"create"])->name('publication.create')->middleware('auth');
+Route::post('/publication/store',[PublicationController::class,'store'])->name('publication.store')->middleware('auth');
 // update
 Route::get('publication/edit/{id}',[PublicationController::class,'edit'])->name('publication.edit');
 Route::put('publication/update/{id}',[PublicationController::class,'update'])->name('publication.update');

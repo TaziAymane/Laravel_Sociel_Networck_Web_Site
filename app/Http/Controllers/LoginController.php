@@ -26,7 +26,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             
-            return redirect()->route('homePage')->with('success','vous etes bien connecter ' . $email." .");
+            return redirect()->route('publication.index')->with('success','vous etes bien connecter ' . $email." .");
         }
 
         // Authentication failed
@@ -40,7 +40,7 @@ class LoginController extends Controller
 
         Auth::logout();
 
-        return redirect()->route('login.show');
+        return redirect()->route('publication.index');
 
 
     }
